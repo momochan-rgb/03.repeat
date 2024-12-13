@@ -49,7 +49,7 @@ th, td {
 </style>
 </head>
 <body>
-    <table>
+<table>
         <tr>
             <th></th>
             <th>c1</th>
@@ -57,33 +57,20 @@ th, td {
             <th>c3</th>
             <th>横合計</th>
         </tr>
-        <tr>
         <?php
-            for($a =1;$a <=3;$a++){
-                echo '<tr>';
-                    foreach($arr as $row){
-                        foreach($row as $data){
-                            echo '<th>'.$row.'</th>'; 
-        
-                            for($i=1;$i<=3;$i++) {
-                                echo '<td>'.$data.'</td>';
-                            }
-        
-                            for($i=1;$i<=1;$i++) {
-                                echo '<td>'.array_sum($row).'</td>';
-                            }
-                        }
-                    }
-                echo '</tr>'."<br />";
-            }
-        ?>
+            foreach($arr as $row =>$data){?>
+        <tr>
+            <th><?=$row ?></th>
+            <td><?=$data ?></td>
+            <td><?=array_sum(array_column($arr,'r1')) ?></td>
         </tr>
+        <?php }?>
         <tr>
             <th>縦合計</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><?=array_sum(array_column($arr,'c1')) ?></td>
+            <td><?=array_sum(array_column($arr,'c2')) ?></td>
+            <td><?=array_sum(array_column($arr,'c3')) ?></td>
+            <td><?=array_sum($data) ?></td>
         </tr>
     </table>
 </body>
