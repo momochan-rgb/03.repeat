@@ -14,23 +14,11 @@
  *  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
  */
 
-$arr = [
+ $arr = [
     'r1' => ['c1' => 10, 'c2' => 5, 'c3' => 20],
     'r2' => ['c1' => 7, 'c2' => 8, 'c3' => 12],
     'r3' => ['c1' => 25, 'c2' => 9, 'c3' => 130]
 ];
-
-foreach($arr as $row){
-    foreach($row as $data){
-        echo $data;
-    }
-    echo array_sum($row);
-    echo "<br />";
-}
-
-echo array_sum(array_column($arr,'c1'));
-echo array_sum(array_column($arr,'c2'));
-echo array_sum(array_column($arr,'c3'));
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +37,12 @@ th, td {
 </style>
 </head>
 <body>
+<?php
+$c = []; 
+$cnt = count($arr);
+?>
 <table>
+    <thead>
         <tr>
             <th></th>
             <th>c1</th>
@@ -57,21 +50,27 @@ th, td {
             <th>c3</th>
             <th>横合計</th>
         </tr>
-        <?php
-            foreach($arr as $row =>$data){?>
-        <tr>
-            <th><?=$row ?></th>
-            <td><?=$data ?></td>
-            <td><?=array_sum(array_column($arr,'r1')) ?></td>
-        </tr>
-        <?php }?>
+    </thead>
+    <tbody>
+        <?php for ($i = 1; $i <= $cnt; $i ++): ?>
+		<tr>
+			<th>r<?php echo $i; ?></th>
+			<?php $sub_total = 0; for ($j = 1; $j <= 3; $j ++): ?>
+			<td><?php $n = $arr['r' . $i]['c' . $j]; echo $n; ?></td>
+			<?php $c[$j] = isset($c[$j]) ? $c[$j] + $n : $n; $sub_total += $n; endfor; ?>
+			<td><?php echo $sub_total; ?></td>
+		</tr>
+		<?php endfor; ?>
+    </tbody>
+    <tfood>
         <tr>
             <th>縦合計</th>
             <td><?=array_sum(array_column($arr,'c1')) ?></td>
             <td><?=array_sum(array_column($arr,'c2')) ?></td>
             <td><?=array_sum(array_column($arr,'c3')) ?></td>
-            <td><?=array_sum($data) ?></td>
+            <td><?php echo array_sum($c); ?></td>
         </tr>
-    </table>
+    </tfood>
+</table>
 </body>
 </html>
