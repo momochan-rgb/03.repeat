@@ -24,13 +24,13 @@ $arr = [99, 3, 12, 45, 60, 100, 31, 7, 28];
 // ここで並び替え処理
 $count = count($arr);
 for ($i = 0; $i < $count; $i++) {
-  for ($n = 1; $n < $count; $n++) {
-    if($arr[$n-1] > $arr[$n]) {
-      $temp = $arr[$n];
-      $arr[$n] = $arr[$n-1];
-      $arr[$n-1] = $temp;
+    for ($n = 1; $n < $count; $n++) {
+        if ($arr[$n - 1] > $arr[$n]) {
+            $temp = $arr[$n];
+            $arr[$n] = $arr[$n - 1];
+            $arr[$n - 1] = $temp;
+        }
     }
-  }
 }
 
 ?>
@@ -41,7 +41,7 @@ for ($i = 0; $i < $count; $i++) {
 <title>数字並び替えプログラム</title>
 </head>
 <?php
-  foreach($arr as $data){?>
+  foreach ($arr as $data) {?>
 <body>
     <!-- ここに並び替え後を表示 -->
     <?=$data ?>

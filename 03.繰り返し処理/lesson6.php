@@ -14,10 +14,10 @@
  *  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
  */
 
- $arr = [
-    'r1' => ['c1' => 10, 'c2' => 5, 'c3' => 20],
-    'r2' => ['c1' => 7, 'c2' => 8, 'c3' => 12],
-    'r3' => ['c1' => 25, 'c2' => 9, 'c3' => 130]
+$arr = [
+   'r1' => ['c1' => 10, 'c2' => 5, 'c3' => 20],
+   'r2' => ['c1' => 7, 'c2' => 8, 'c3' => 12],
+   'r3' => ['c1' => 25, 'c2' => 9, 'c3' => 130]
 ];
 
 ?>
@@ -38,7 +38,7 @@ th, td {
 </head>
 <body>
 <?php
-$c = []; 
+$c = [];
 $cnt = count($arr);
 ?>
 <table>
@@ -52,12 +52,15 @@ $cnt = count($arr);
         </tr>
     </thead>
     <tbody>
-        <?php for ($i = 1; $i <= $cnt; $i ++): ?>
+        <?php for ($i = 1; $i <= $cnt; $i++): ?>
 		<tr>
 			<th>r<?php echo $i; ?></th>
-			<?php $sub_total = 0; for ($j = 1; $j <= 3; $j ++): ?>
-			<td><?php $n = $arr['r' . $i]['c' . $j]; echo $n; ?></td>
-			<?php $c[$j] = isset($c[$j]) ? $c[$j] + $n : $n; $sub_total += $n; endfor; ?>
+			<?php $sub_total = 0;
+            for ($j = 1; $j <= 3; $j++): ?>
+			<td><?php $n = $arr['r' . $i]['c' . $j];
+                echo $n; ?></td>
+			<?php $c[$j] = isset($c[$j]) ? $c[$j] + $n : $n;
+                $sub_total += $n; endfor; ?>
 			<td><?php echo $sub_total; ?></td>
 		</tr>
 		<?php endfor; ?>
@@ -65,9 +68,9 @@ $cnt = count($arr);
     <tfood>
         <tr>
             <th>縦合計</th>
-            <td><?=array_sum(array_column($arr,'c1')) ?></td>
-            <td><?=array_sum(array_column($arr,'c2')) ?></td>
-            <td><?=array_sum(array_column($arr,'c3')) ?></td>
+            <td><?=array_sum(array_column($arr, 'c1')) ?></td>
+            <td><?=array_sum(array_column($arr, 'c2')) ?></td>
+            <td><?=array_sum(array_column($arr, 'c3')) ?></td>
             <td><?php echo array_sum($c); ?></td>
         </tr>
     </tfood>
